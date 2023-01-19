@@ -244,9 +244,9 @@ export default {
       type: Array,
       default: () => []
     },
-    showUpdateHeaders: {
+    hideUpdateHeaders: {
       type: Boolean,
-      default: true
+      default: false
     },
 
     tableHeaders: {
@@ -316,7 +316,7 @@ export default {
             width: '100'
           }
         )
-        if (this.showUpdateHeaders) {
+        if (!this.hideUpdateHeaders) {
           headers.push(
             {
               text: this.$t('updateTime'),
