@@ -433,7 +433,7 @@ export default {
           this.selectedItems.push(this.selectReturnObject ? Object.assign({}, item) : item.uuid)
         }
       } else {
-        this.selectedItems = this.$util.remove(this.selectedItems, 'uuid', this.selectReturnObject ? item.uuid : item)
+        this.selectedItems = this.$or.util.remove(this.selectedItems, 'uuid', this.selectReturnObject ? item.uuid : item)
       }
       this.$emit('itemsSelected', this.selectedItems)
     },
@@ -543,7 +543,7 @@ export default {
         })
         // 删除已经更新到UI上的
         needDelete.forEach((item) => {
-          this.presetSelectedItemsModel = this.$util.remove(this.presetSelectedItemsModel, 'uuid', item.uuid)
+          this.presetSelectedItemsModel = this.$or.util.remove(this.presetSelectedItemsModel, 'uuid', item.uuid)
         })
         // 剩余选中的，但是VDataTable还没有加载到
         this.presetSelectedItemsModel.forEach((item) => {
