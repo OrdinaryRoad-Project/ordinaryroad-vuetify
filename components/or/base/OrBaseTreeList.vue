@@ -24,7 +24,7 @@
 
 <template>
   <v-list :nav="nav">
-    <template v-for="(item,i) in items">
+    <template v-for="(item,i) in filteredItems">
       <template v-if="item.children">
         <v-list-group
             v-if="item.children.length > 0"
@@ -102,8 +102,32 @@ export default {
       default: true
     }
   },
+  computed: {
+    filteredItems() {
+      return this.filter(this.items)
+    }
+  },
   methods: {
-    onClickListItem (item) {
+    filter(items) {
+      const filteredItems = []
+      // 过滤掉ignore的
+      for (const item of items) {
+        if (!item.children || !item.children.length) {
+          filteredItems.push(item)
+        } else {
+          const itemTemp = Object.assign({}, item)
+          itemTemp.children = []
+          for (const childrenItem of item.children) {
+            if (!childrenItem.ignore) {
+              itemTemp.children.push(childrenItem)
+            }
+          }
+          filteredItems.push(itemTemp)
+        }
+      }
+      return filteredItems
+    },
+    onClickListItem(item) {
       this.$emit('clickListItem', item)
     }
   }
