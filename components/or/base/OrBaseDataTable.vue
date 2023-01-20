@@ -429,7 +429,7 @@ export default {
       }
       if (value) {
         // 防止重复
-        if (!this.$util.query(this.selectedItems, 'uuid', this.selectReturnObject ? item.uuid : item)[0]) {
+        if (!this.$or.util.query(this.selectedItems, 'uuid', this.selectReturnObject ? item.uuid : item)[0]) {
           this.selectedItems.push(this.selectReturnObject ? Object.assign({}, item) : item.uuid)
         }
       } else {
@@ -444,7 +444,7 @@ export default {
       // 考虑不在当前显示的items情况，items:1,2,3,4,5和selectedItems:1,3,5,7两个合并
       items.forEach((item) => {
         const searchElement = this.selectReturnObject ? Object.assign({}, item) : item.uuid
-        const index = this.$util.indexOf(this.selectedItems, searchElement)
+        const index = this.$or.util.indexOf(this.selectedItems, searchElement)
         if (value) {
           // 全选直接添加items
           if (index === -1) {
@@ -529,7 +529,7 @@ export default {
         const needDelete = []
         // 遍历更新UI
         this.presetSelectedItemsModel.forEach((presetSelectedItem) => {
-          const selectedItem = this.$util.query(
+          const selectedItem = this.$or.util.query(
             this.dataTableParams.items, 'uuid',
             this.selectReturnObject ? presetSelectedItem.uuid : presetSelectedItem
           )[0]
