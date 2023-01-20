@@ -1,6 +1,6 @@
 # ordinaryroad-vuetify
 
-基于Vuetify封装了新的组件
+基于Vuetify，组件封装、通用样式、工具类、表单校验规则、常用国际化
 
 ## 发布前的调试
 
