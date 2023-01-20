@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2021 苗锦洲
+ * Copyright (c) 2023 苗锦洲
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
