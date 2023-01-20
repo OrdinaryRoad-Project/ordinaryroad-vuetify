@@ -44,9 +44,27 @@ Vue.use(OrVuetify)
 
 ```javascript
 import Vue from 'vue'
-import {OrBaseMaterialCard} from 'ordinaryroad-vuetify/src/components'
+import {
+    BaseMaterialCard,
+    OrBaseDataIterator,
+    OrBaseDataTable,
+    OrBaseMenu,
+    OrBaseTreeList,
+    OrEmpty,
+    OrLoadMoreFooter,
+    OrNoMoreData,
+    OrNotFound
+} from 'ordinaryroad-vuetify/src/components'
 
-Vue.component('OrBaseMaterialCard', OrBaseMaterialCard)
+Vue.component('BaseMaterialCard', BaseMaterialCard)
+Vue.component('OrBaseDataIterator', OrBaseDataIterator)
+Vue.component('OrBaseDataTable', OrBaseDataTable)
+Vue.component('OrBaseMenu', OrBaseMenu)
+Vue.component('OrBaseTreeList', OrBaseTreeList)
+Vue.component('OrEmpty', OrEmpty)
+Vue.component('OrLoadMoreFooter', OrLoadMoreFooter)
+Vue.component('OrNoMoreData', OrNoMoreData)
+Vue.component('OrNotFound', OrNotFound)
 ```
 
 ### 工具类等
