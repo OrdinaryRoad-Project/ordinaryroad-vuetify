@@ -24,44 +24,45 @@
 
 <template>
   <span
-    style="position: relative;"
-    class="d-inline-flex align-center"
+      style="position: relative;"
+      class="d-inline-flex align-center"
   >
     <v-fade-transition>
       <v-form
-        v-if="(autoExpand&&$vuetify.breakpoint.mdAndUp)||searchInputFocused"
-        style="position: absolute; right: 0; width: 100%; max-width: 400px"
-        :style="{'width':$vuetify.breakpoint.smAndDown&&!searchInputFocused?'100px':'300px'}"
-        @submit="onSearchFormSubmit"
-        @submit.n.native.prevent
+          v-if="(autoExpand&&$vuetify.breakpoint.mdAndUp)||searchInputFocused"
+          style="position: absolute; right: 0; width: 100%; max-width: 400px"
+          :style="{'width':$vuetify.breakpoint.smAndDown&&!searchInputFocused?'100px':'300px'}"
+          @submit="onSearchFormSubmit"
+          @submit.n.native.prevent
       >
         <v-text-field
-          ref="input"
-          v-model.trim="searchInput"
-          dense
-          :autofocus="!autoExpand||$vuetify.breakpoint.smAndDown"
-          class="transition-fast-in-fast-out"
-          :class="searchInputFocused?'elevation-2':null"
-          hide-details
-          :placeholder="searchInputPlaceholder"
-          solo
-          :solo-inverted="soloInverted"
-          clearable
-          flat
-          maxlength="10"
-          :rules="[$or.rules.max100Chars]"
-          append-icon="mdi-magnify"
-          @click:append="onClickSearchInputAppend"
-          @focusin="searchInputFocused=true"
-          @focusout="searchInputFocused=false"
+            id="orSearchInput"
+            ref="input"
+            v-model.trim="searchInput"
+            dense
+            :autofocus="!autoExpand||$vuetify.breakpoint.smAndDown"
+            class="transition-fast-in-fast-out"
+            :class="searchInputFocused?'elevation-2':null"
+            hide-details
+            :placeholder="searchInputPlaceholder"
+            solo
+            :solo-inverted="soloInverted"
+            clearable
+            flat
+            maxlength="10"
+            :rules="[$or.rules.max100Chars]"
+            append-icon="mdi-magnify"
+            @click:append="onClickSearchInputAppend"
+            @focusin="searchInputFocused=true"
+            @focusout="searchInputFocused=false"
         />
       </v-form>
     </v-fade-transition>
     <v-fade-transition>
       <v-btn
-        v-if="(!autoExpand||$vuetify.breakpoint.smAndDown)&&!searchInputFocused"
-        icon
-        @click="searchInputFocused=true"
+          v-if="(!autoExpand||$vuetify.breakpoint.smAndDown)&&!searchInputFocused"
+          icon
+          @click="searchInputFocused=true"
       >
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
@@ -111,6 +112,23 @@ export default {
     }
   },
   mounted () {
+    // 兼容其他输入框正常输入'/'
+    const inputs = [...window.document.getElementsByTagName('input')].filter((input) => {
+      return input.id !== 'orSearchInput' && input.type === 'text'
+    })
+    const textareas = window.document.getElementsByTagName('textarea')
+    const editableElements = [...inputs, ...textareas]
+    if (editableElements && editableElements.length) {
+      for (const element of editableElements) {
+        element.addEventListener('focus', (ev) => {
+          this.$store.dispatch('app/setSearchInputHotKeyEnabled', false)
+        })
+        element.addEventListener('blur', (ev) => {
+          this.$store.dispatch('app/setSearchInputHotKeyEnabled', true)
+        })
+      }
+    }
+
     window.addEventListener('keydown', (e) => {
       if (this.$vuetify.breakpoint.smAndDown || this.disableHotKey) {
         return
