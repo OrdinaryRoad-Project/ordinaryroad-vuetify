@@ -28,6 +28,7 @@
       persistent
       loading
       :title="title"
+      @onClose="onClose"
       @onConfirm="$emit('onConfirm',input)"
   >
     <v-form ref="form">
@@ -97,6 +98,10 @@ export default {
     },
     validate () {
       return this.$refs.form.validate()
+    },
+    onClose () {
+      this.input = ''
+      this.$emit('onClose')
     }
   }
 }
