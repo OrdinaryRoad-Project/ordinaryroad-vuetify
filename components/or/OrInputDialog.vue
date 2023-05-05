@@ -59,6 +59,13 @@
 export default {
   name: 'OrInputDialog',
   props: {
+    /**
+     * 关闭时是否保留输入
+     */
+    keepInputOnClose: {
+      type: Boolean,
+      default: false
+    },
     defaultValue: {
       type: [String, Number],
       default: ''
@@ -100,7 +107,9 @@ export default {
       return this.$refs.form.validate()
     },
     onClose () {
-      this.input = ''
+      if (!this.keepInputOnClose) {
+        this.input = ''
+      }
       this.$emit('onClose')
     }
   }
