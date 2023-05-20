@@ -195,10 +195,16 @@ export default {
       if (!element) {
         return []
       }
-      const inputs = [...element.getElementsByTagName('input')].filter((input) => {
-        return input.id !== 'orSearchInput' && input.type === 'text' && input.getAttribute('readonly') !== 'readonly'
-      })
-      const textareas = element.getElementsByTagName('textarea')
+      let inputs = []
+      let textareas = []
+      try {
+        inputs = [...element.getElementsByTagName('input')].filter((input) => {
+          return input.id !== 'orSearchInput' && input.type === 'text' && input.getAttribute('readonly') !== 'readonly'
+        })
+        textareas = element.getElementsByTagName('textarea')
+      } catch {
+        // ignore
+      }
       return [...inputs, ...textareas]
     },
 
