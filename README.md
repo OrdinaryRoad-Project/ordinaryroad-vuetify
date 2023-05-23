@@ -4,12 +4,22 @@
 
 ## 发布前的调试
 
+现在当前项目执行
+
 ```shell
 npm link
 ```
 
+然后就能在其他项目里调试了
+
 ```shell
 npm link ordinaryroad-vuetify
+```
+
+取消调试
+
+```shell
+npm link
 ```
 
 ## 发布
@@ -27,6 +37,7 @@ npm publish
 ### 组件
 
 > 先引入样式
+
 ```javascript
 import 'ordinaryroad-vuetify/src/styles/ordinaryroad.css'
 ```
@@ -48,12 +59,15 @@ import {
     BaseMaterialCard,
     OrBaseDataIterator,
     OrBaseDataTable,
+    OrBaseDialog,
     OrBaseMenu,
     OrBaseTreeList,
     OrEmpty,
+    OrInputDialog,
     OrLoadMoreFooter,
     OrNoMoreData,
-    OrNotFound
+    OrNotFound,
+    OrSearch
 } from 'ordinaryroad-vuetify/src/components'
 
 Vue.component('BaseMaterialCard', BaseMaterialCard)
@@ -65,11 +79,15 @@ Vue.component('OrEmpty', OrEmpty)
 Vue.component('OrLoadMoreFooter', OrLoadMoreFooter)
 Vue.component('OrNoMoreData', OrNoMoreData)
 Vue.component('OrNotFound', OrNotFound)
+Vue.component('OrSearch', OrSearch)
+Vue.component('OrBaseDialog', OrBaseDialog)
+Vue.component('OrInputDialog', OrInputDialog)
 ```
 
 ### 工具类等
 
-> 注意先后顺序，这里是先注册了`vue-i18n`插件，所以可以用`rules.init(i18n.$t)`，否则需要在注册国际化插件时调用`$or.rules.init(VueI18n)`方法
+> 注意先后顺序，这里是先注册了`vue-i18n`插件，所以可以用`rules.init(i18n.$t)`
+> ，否则需要在注册国际化插件时调用`$or.rules.init(VueI18n)`方法
 
 ```javascript
 import Vue from 'vue'
