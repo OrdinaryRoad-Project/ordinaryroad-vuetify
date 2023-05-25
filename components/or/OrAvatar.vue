@@ -26,17 +26,17 @@
   <v-hover :disabled="!editable">
     <template #default="{ hover }">
       <v-avatar
-        style="border: 1px solid;"
-        :size="size"
-        :class="avatarClass"
-        color="grey"
+          style="border: 1px solid;"
+          :size="size"
+          :class="avatarClass"
+          color="grey"
       >
         <v-img v-if="avatar" :src="avatar">
           <template #default>
             <v-fade-transition>
               <v-overlay
-                v-if="avatarOptions.uploading"
-                absolute
+                  v-if="avatarOptions.uploading"
+                  absolute
               >
                 <v-progress-circular indeterminate />
               </v-overlay>
@@ -50,22 +50,22 @@
 
         <v-fade-transition>
           <v-overlay
-            v-if="!avatarOptions.uploading&&hover"
-            v-ripple
-            absolute
-            style="cursor: pointer"
-            @click="$refs.fileInput.$refs.input.click()"
+              v-if="!avatarOptions.uploading&&hover"
+              v-ripple
+              absolute
+              style="cursor: pointer"
+              @click="$refs.fileInput.$refs.input.click()"
           >
             <v-file-input
-              v-show="false"
-              ref="fileInput"
-              accept="image/*"
-              @change="onChange"
+                v-show="false"
+                ref="fileInput"
+                accept="image/*"
+                @change="onChange"
             />
             <v-row
-              class="fill-height ma-0"
-              align="center"
-              justify="center"
+                class="fill-height ma-0"
+                align="center"
+                justify="center"
             >
               <v-icon>mdi-pencil</v-icon>
             </v-row>
