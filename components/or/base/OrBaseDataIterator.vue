@@ -94,7 +94,7 @@
       </v-row>
 
       <slot name="searchFormBefore" />
-      <v-form ref="searchForm">
+      <v-form ref="searchForm" @submit.native.prevent>
         <v-row align="center">
           <slot name="searchFormBody" />
           <v-col
@@ -106,7 +106,7 @@
               small
               color="primary"
               outlined
-              @click="options={...options,page:1}"
+              @click="searchItems"
             >
               <v-icon left>
                 mdi-magnify
@@ -365,6 +365,9 @@ export default {
         item: this.selectedItem,
         index: this.selectedIndex
       })
+    },
+    searchItems () {
+      this.options = { ...this.options, page: 1 }
     },
     getItems () {
       this.dataIteratorParams.loading = true

@@ -33,6 +33,8 @@
     "back": "返回上一级",
     "home": "返回首页"
   },
+  "focusSearchInputTip": "按 '/' 开始输入",
+  "focusSearchInputTipWhenFocused": "回车搜索，ESC取消",
   "inputWhatToSearchPlaceHolder": "输入{0}进行搜索",
   "insert": "新增",
   "language": "语言",

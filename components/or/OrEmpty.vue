@@ -23,8 +23,11 @@
   -->
 
 <template>
-  <v-sheet :height="200" class="d-flex justify-center align-center">
-    <h1>{{ $vuetify.lang.t('$vuetify.noDataText') }}</h1>
+  <v-sheet :height="200" class="d-flex align-center justify-center flex-column">
+    <slot>
+      <h1>{{ $vuetify.lang.t('$vuetify.noDataText') }}</h1>
+    </slot>
+    <slot name="append"/>
   </v-sheet>
 </template>
 

@@ -29,14 +29,15 @@
       loading
       :title="title"
       @onClose="onClose"
-      @onConfirm="$emit('onConfirm',input)"
+      @onConfirm="confirm"
   >
-    <v-form ref="form">
+    <v-form ref="form" @submit.native.prevent>
       <v-text-field
           v-model.trim="input"
           :rules="rules"
           :label="label"
           :hint="hint"
+          @keydown.enter="confirm"
       >
         <template #prepend>
           <slot name="prepend" />
@@ -99,6 +100,9 @@ export default {
     },
     close () {
       this.$refs.dialog.close()
+    },
+    confirm(){
+      this.$emit('onConfirm',this.input)
     },
     cancelLoading () {
       this.$refs.dialog.cancelLoading()
