@@ -407,14 +407,17 @@ export default {
         index: this.selectedIndex
       })
     },
-    getItems () {
+    searchItems () {
+      this.getItems(1)
+    },
+    getItems (page = null) {
       this.dataTableParams.loading = true
 
       const sortBy = this.options.sortBy
       const sortDesc = this.options.sortDesc
       this.$emit('getItems', {
         options: this.options,
-        offset: (this.options.page - 1) * this.options.itemsPerPage,
+        offset: ((page ?? this.options.page) - 1) * this.options.itemsPerPage,
         limit: this.options.itemsPerPage,
         sortBy,
         sortDesc
