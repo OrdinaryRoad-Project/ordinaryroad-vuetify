@@ -19,7 +19,7 @@ npm link ordinaryroad-vuetify
 取消调试
 
 ```shell
-npm link
+npm unlink ordinaryroad-vuetify 
 ```
 
 ## 发布
