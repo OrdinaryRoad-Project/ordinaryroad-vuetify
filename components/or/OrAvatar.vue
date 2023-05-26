@@ -46,7 +46,7 @@
             <v-skeleton-loader type="image" />
           </template>
         </v-img>
-        <span v-else class="white--text">{{ username.slice(0, 1) }}</span>
+        <span v-else class="white--text" :style="{fontSize:`${size/2.5}px`}">{{ username.slice(0, 1) }}</span>
 
         <v-fade-transition>
           <v-overlay
