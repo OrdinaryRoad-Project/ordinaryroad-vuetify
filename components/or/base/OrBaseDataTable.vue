@@ -63,7 +63,7 @@
               small
               color="primary"
               outlined
-              @click="options={...options,page:1}"
+              @click="searchItems"
             >
               <v-icon left>
                 mdi-magnify
@@ -408,16 +408,16 @@ export default {
       })
     },
     searchItems () {
-      this.getItems(1)
+      this.options = { ...this.options, page: 1 }
     },
-    getItems (page = null) {
+    getItems () {
       this.dataTableParams.loading = true
 
       const sortBy = this.options.sortBy
       const sortDesc = this.options.sortDesc
       this.$emit('getItems', {
         options: this.options,
-        offset: ((page ?? this.options.page) - 1) * this.options.itemsPerPage,
+        offset: (this.options.page - 1) * this.options.itemsPerPage,
         limit: this.options.itemsPerPage,
         sortBy,
         sortDesc

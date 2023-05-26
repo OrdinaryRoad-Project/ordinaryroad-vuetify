@@ -106,7 +106,7 @@
               small
               color="primary"
               outlined
-              @click="options={...options,page:1}"
+              @click="searchItems"
             >
               <v-icon left>
                 mdi-magnify
@@ -365,6 +365,9 @@ export default {
         item: this.selectedItem,
         index: this.selectedIndex
       })
+    },
+    searchItems () {
+      this.options = { ...this.options, page: 1 }
     },
     getItems () {
       this.dataIteratorParams.loading = true
