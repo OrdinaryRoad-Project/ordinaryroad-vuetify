@@ -94,7 +94,7 @@
       </v-row>
 
       <slot name="searchFormBefore" />
-      <v-form ref="searchForm">
+      <v-form ref="searchForm" @submit.native.prevent>
         <v-row align="center">
           <slot name="searchFormBody" />
           <v-col

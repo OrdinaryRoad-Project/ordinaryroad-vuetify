@@ -33,7 +33,7 @@
           style="position: absolute; right: 0; width: 100%; max-width: 400px"
           :style="{'width':$vuetify.breakpoint.smAndDown&&!searchInputFocused?'100px':'300px'}"
           @submit="onSearchFormSubmit"
-          @submit.n.native.prevent
+          @submit.native.prevent
       >
         <v-text-field
             id="orSearchInput"

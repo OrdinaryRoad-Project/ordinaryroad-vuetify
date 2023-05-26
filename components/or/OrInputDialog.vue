@@ -31,7 +31,7 @@
       @onClose="onClose"
       @onConfirm="$emit('onConfirm',input)"
   >
-    <v-form ref="form">
+    <v-form ref="form" @submit.native.prevent>
       <v-text-field
           v-model.trim="input"
           :rules="rules"
