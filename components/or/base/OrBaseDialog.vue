@@ -26,7 +26,7 @@
   <v-dialog
       v-model="value"
       :persistent="loadingModel||(persistent==null?loading:persistent)"
-      width="80%"
+      :width="width"
       scrollable
       @input="input"
   >
@@ -90,6 +90,10 @@ export default {
     title: {
       type: String,
       required: true
+    },
+    width:{
+      type: [String, Number],
+      default: '80%'
     }
   },
   data: () => ({
