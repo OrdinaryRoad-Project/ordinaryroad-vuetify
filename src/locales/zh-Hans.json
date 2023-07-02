@@ -68,7 +68,10 @@
   "retry": "重试",
   "role": "角色",
   "rules": {
-    "contentNotEmpty": "内容不能为空"
+    "contentNotEmpty": "内容不能为空",
+    "contentNotBlank": "内容不能为空",
+    "inputNotInteger": "输入必须为整数",
+    "maxNFileSize": "文件大小不能超过{0}"
   },
   "search": "搜索",
   "settings": "设置",

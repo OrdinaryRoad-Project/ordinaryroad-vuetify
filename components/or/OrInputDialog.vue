@@ -101,8 +101,12 @@ export default {
     close () {
       this.$refs.dialog.close()
     },
-    confirm(){
-      this.$emit('onConfirm',this.input)
+    confirm () {
+      if (!this.$refs.form.validate()) {
+        this.cancelLoading()
+        return
+      }
+      this.$emit('onConfirm', this.input)
     },
     cancelLoading () {
       this.$refs.dialog.cancelLoading()

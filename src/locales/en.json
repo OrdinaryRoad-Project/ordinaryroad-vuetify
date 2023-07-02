@@ -68,7 +68,10 @@
   "retry": "Retry",
   "role": "Role",
   "rules": {
-    "contentNotEmpty": "The content can not be blank."
+    "contentNotEmpty": "The content can not be empty.",
+    "contentNotBlank": "The content can not be blank.",
+    "inputNotInteger": "The input must be an integer.",
+    "maxNFileSize": "File size should be less than or equal to {0}."
   },
   "search": "Search",
   "settings": "Settings",

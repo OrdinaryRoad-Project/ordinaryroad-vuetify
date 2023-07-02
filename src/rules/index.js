@@ -29,7 +29,7 @@ module.exports = {
     $t = $t || t
   },
   required: value => (value !== undefined) || $t('required'),
-  notBlank: value => (!!value && String(value).length > 0) || $t('required'),
+  notBlank: value => (!!value && String(value).trim().length > 0) || $t('rules.contentNotBlank'),
   min6Chars: value => (!value || String(value).length >= 6) || $t('minNChars', [6]),
   max10Chars: value => (!value || String(value).length <= 10) || $t('maxNChars', [10]),
   max11Chars: value => (!value || String(value).length <= 11) || $t('maxNChars', [11]),
@@ -43,5 +43,6 @@ module.exports = {
   max500Chars: value => (!value || String(value).length <= 500) || $t('maxNChars', [500]),
   max1000Chars: value => (!value || String(value).length <= 1000) || $t('maxNChars', [1000]),
   max10Size: value => (!value || value.length <= 10) || $t('maxNSize', [10]),
-  maxFileSize10MB: value => (!value || value.size <= 10000000) || 'File size should be less than or equal to 10 MB.'
+  maxFileSize10MB: value => (!value || value.size <= 10000000) || $t('rules.maxNFileSize', ['10MB']),
+  integer: value => Number.isInteger(Number(value)) || $t('rules.inputNotInteger'),
 }

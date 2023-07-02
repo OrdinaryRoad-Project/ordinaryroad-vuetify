@@ -4,7 +4,7 @@
 
 ## 发布前的调试
 
-现在当前项目执行
+先在当前项目执行
 
 ```shell
 npm link
@@ -57,12 +57,14 @@ Vue.use(OrVuetify)
 import Vue from 'vue'
 import {
     BaseMaterialCard,
+    OrAvatar,
     OrBaseDataIterator,
     OrBaseDataTable,
     OrBaseDialog,
     OrBaseMenu,
     OrBaseTreeList,
     OrEmpty,
+    OrFileField,
     OrInputDialog,
     OrLoadMoreFooter,
     OrNoMoreData,
@@ -82,6 +84,8 @@ Vue.component('OrNotFound', OrNotFound)
 Vue.component('OrSearch', OrSearch)
 Vue.component('OrBaseDialog', OrBaseDialog)
 Vue.component('OrInputDialog', OrInputDialog)
+Vue.component('OrAvatar', OrAvatar)
+Vue.component('OrFileField', OrFileField)
 ```
 
 ### 工具类等
