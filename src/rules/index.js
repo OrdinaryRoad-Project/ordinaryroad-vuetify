@@ -43,6 +43,6 @@ module.exports = {
   max500Chars: value => (!value || String(value).length <= 500) || $t('maxNChars', [500]),
   max1000Chars: value => (!value || String(value).length <= 1000) || $t('maxNChars', [1000]),
   max10Size: value => (!value || value.length <= 10) || $t('maxNSize', [10]),
-  maxFileSize10MB: value => (!value || value.size <= 10000000) || $t('rules.maxNFileSize', ["10MB"]),
-  integer: value => (!value || Number.isInteger(Number(value))) || $t('rules.inputNotInteger'),
+  maxFileSize10MB: value => (!value || value.size <= 10000000) || $t('rules.maxNFileSize', ['10MB']),
+  integer: value => Number.isInteger(Number(value)) || $t('rules.inputNotInteger'),
 }
